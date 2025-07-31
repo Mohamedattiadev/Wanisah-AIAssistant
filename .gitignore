@@ -8,7 +8,12 @@ config.py
 
 # Generated media
 response.mp3
+response_fast.mp3
+response_normal.mp3
 
 # IDE/Editor folders
 .vscode/
 .idea/
+
+#keys
+config/keys.py
