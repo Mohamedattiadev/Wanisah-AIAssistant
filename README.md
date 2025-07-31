@@ -55,8 +55,6 @@ chmod +x install.sh
 ./install.sh
 ```
 
-````
-
 > The script installs all system and Python dependencies. You will be prompted for your password for system-level installs.
 
 ---
@@ -137,7 +135,3 @@ Contributions are welcome! If you have ideas for new features or improvements, f
 ## 📜 License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
-
-```
-
-````
