@@ -1,0 +1,5 @@
+python
+python-pip
+portaudio
+espeak
+ffmpeg

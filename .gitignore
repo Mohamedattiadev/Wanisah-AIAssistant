@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# Secrets - IMPORTANT
+config.py
+
+# Generated media
+response.mp3
+
+# IDE/Editor folders
+.vscode/
+.idea/
