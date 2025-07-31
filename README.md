@@ -1,4 +1,3 @@
-````markdown
 # Wanisah AI Assistant
 
 <p align="center">
@@ -55,6 +54,7 @@ Getting Wanisah set up is handled by a simple installation script.
 chmod +x install.sh
 ./install.sh
 ```
+
 ````
 
 > The script installs all system and Python dependencies. You will be prompted for your password for system-level installs.
@@ -140,4 +140,4 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 ```
 
-```
+````
