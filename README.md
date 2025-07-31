@@ -1,137 +1,227 @@
 # Wanisah AI Assistant
 
+<div align="center">
+<pre>
+██╗    ██╗ █████╗ ███╗   ██╗██╗███████╗ █████╗ ██╗  ██╗
+██║    ██║██╔══██╗████╗  ██║██║██╔════╝██╔══██╗██║  ██║
+██║ █╗ ██║███████║██╔██╗ ██║██║███████╗███████║███████║
+██║███╗██║██╔══██║██║╚██╗██║██║╚════██║██╔══██║██╔══██║
+╚███╔███╔╝██║  ██║██║ ╚████║██║███████║██║  ██║██║  ██║
+╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝
+</pre>
+
+<h3 align="center">A Smart AI Voice Assistant for the Linux Desktop</h3>
+
 <p align="center">
-  <img src="https://img.icons8.com/color/192/000000/futurama-bender.png" alt="Wanisah Logo">
+<img alt="Python Version" src="https://img.shields.io/badge/python-3.11-blue.svg">
+<img alt="License" src="https://img.shields.io/badge/license-MIT-green.svg">
+<img alt="Platform" src="https://img.shields.io/badge/platform-Arch%20Linux-lightgrey.svg">
 </p>
-
-<h3 align="center">Your Personal, Offline-First Voice Assistant for the Linux Desktop</h3>
-
-<p align="center">
-  <img alt="Python Version" src="https://img.shields.io/badge/python-3.9%2B-blue.svg">
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-green.svg">
-  <img alt="Platform" src="https://img.shields.io/badge/platform-Linux-lightgrey.svg">
-</p>
+</div>
 
 ---
 
-**Wanisah** is a simple, hackable, and privacy-focused voice assistant designed to run completely on your local machine. Control your desktop, open apps, and get answers to your questions — all without your data ever leaving your computer.
+**Wanisah** is your own offline and privacy-friendly AI voice assistant, built specifically for Linux. It listens to you, talks back naturally, and helps you get things done — like opening apps, checking the weather, or managing tasks — all **without sending your voice or data to the cloud**.
 
 ---
 
-## 🎥 Demo
+## ✨ Key Features (Plain English)
 
-_It's highly recommended to record a short GIF of the assistant in action and place it here._
-
----
-
-## ✨ Features
-
-- 🧠 **Offline AI Chat**: Uses a local GPT4All model to understand and respond to conversational queries. No internet required for the AI brain.
-- 🗣️ **Natural Voice Interaction**: High-quality text-to-speech provided by Google for a more natural-sounding voice.
-- 🖥️ **Desktop Control**: Natively integrates with the Qtile window manager to perform actions like switching workspaces.
-- 🚀 **Application Launcher**: Open any application on your system, like Rofi or your terminal, with a simple voice command.
-- 🌐 **Web Launcher**: Quickly open frequently used websites like YouTube or Google.
-- ✅ **Zero Configuration**: An easy-to-use installation script handles all dependencies for you.
-- 🔧 **Easily Extendable**: Add your own custom commands with just a few lines of Python.
+- 🧠 **Smart Brain with Backup**: Uses Google Gemini for intelligent replies when online, and falls back to a local GPT model when offline.
+- 🎤 **Private Listening**: Uses Vosk, a fully offline speech recognizer. Your voice never leaves your computer.
+- 🗣️ **Clear Voice Replies**: Uses Google TTS for a natural voice. If offline, it still talks using a fast built-in voice engine.
+- 🖥️ **Controls Your Desktop**: Switch workspaces, open terminals, or launch apps like Rofi — just by speaking.
+- 📋 **Useful Built-in Tools**:
+  - Send Emails
+  - Track To-Dos
+  - Get Weather Info
+  - Check System Usage
+  - Do Math
+- 🛠️ **Customizable**: Add your own commands easily — no advanced coding required.
 
 ---
 
-## ⚙️ Requirements
+## 🚀 Getting Started (Step-by-Step)
 
-- **Operating System**: Arch Linux (or a derivative like Manjaro)
-- **Hardware**: A working microphone
-- **Internet**: Required for the initial model download and for the high-quality voice, but the core AI is offline
+This guide will help even non-coders set up Wanisah from scratch.
 
 ---
 
-## 🚀 Getting Started
+### 📦 Step 1: System Requirements
 
-### 1. Installation
+- ✅ You’re using **Arch Linux** or **Manjaro**
+- ✅ You have a **microphone**
+- ✅ You have an **internet connection** (just for setup)
 
-Getting Wanisah set up is handled by a simple installation script.
+---
+
+### 🔧 Step 2: Install Python with pyenv
+
+We'll use `pyenv` to make sure you're using the correct Python version.
+
+#### 🧰 Install `pyenv`:
 
 ```bash
+yay -S pyenv
+```
+
+#### 🧰 Configure your shell (pick one):
+
+<details>
+<summary>🐟 If you use Fish shell</summary>
+
+Edit `~/.config/fish/config.fish` and add:
+
+```bash
+set -gx PYENV_ROOT $HOME/.pyenv
+set -gx PATH $PYENV_ROOT/bin $PATH
+status --is-interactive; and source (pyenv init -|psub)
+```
+
+</details>
+
+<details>
+<summary>🧪 If you use Bash or Zsh</summary>
+
+Add this to `~/.bashrc` or `~/.zshrc`:
+
+```bash
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+```
+
+</details>
+
+Restart your terminal.
+
+---
+
+### 🐍 Step 3: Set Up Python Environment
+
+```bash
+# Install the required Python version
+pyenv install 3.11.9
+
+# Use it inside this project
+pyenv local 3.11.9
+
+# Create a virtual environment
+python3.11 -m venv venv
+
+# Activate it (pick one):
+source venv/bin/activate       # For Bash/Zsh
+source venv/bin/activate.fish  # For Fish shell
+```
+
+---
+
+### 📂 Step 4: Install Wanisah
+
+```bash
+# Clone the project
+git clone https://github.com/your-username/wanisah-Assistant.git
+cd wanisah-Assistant
+
+# Make install script executable
 chmod +x install.sh
+
+# Run it (you’ll be asked for your password)
 ./install.sh
 ```
 
-> The script installs all system and Python dependencies. You will be prompted for your password for system-level installs.
+---
+
+### 🔐 Step 5: Add Your API Keys
+
+Create a file named `keys.py` inside the `config/` folder:
+
+```bash
+touch config/keys.py
+```
+
+Paste this into the file and add your real credentials:
+
+```python
+# config/keys.py
+gemini_api_key = "YOUR_GEMINI_API_KEY"
+EMAIL_ADDRESS = "your_email@example.com"
+EMAIL_PASSWORD = "your_app_password"
+```
 
 ---
 
-### 2. First Run
-
-Navigate to the project directory and start the assistant:
+### ▶️ Step 6: Run the Assistant
 
 ```bash
 python main.py
 ```
 
-**Note**: The first run downloads the AI model (~2 GB). This is a one-time download and may take a few minutes.
+The first time, it will download models (~2GB). This only happens once.
 
-Once ready, the assistant will announce:
+Once ready, it will say:
 
 > "System online. I am ready to assist you."
 
 ---
 
-## 🎤 Usage
+## 🎤 What Can I Say?
 
-Simply speak to the assistant naturally. It is always listening.
-
-| Command                          | Action                                     |
-| -------------------------------- | ------------------------------------------ |
-| `Open Rofi`                      | Launches the Rofi application launcher.    |
-| `Go to workspace 2`              | Switches to the second workspace in Qtile. |
-| `Open YouTube`                   | Opens youtube.com in your browser.         |
-| `What is the capital of France?` | Gets a conversational answer from the AI.  |
-| `Tell me a joke`                 | The AI will tell you a joke.               |
-| `Jarvis quit`                    | Closes the assistant.                      |
+| You Say...                        | Wanisah Will...                              |
+| --------------------------------- | -------------------------------------------- |
+| "Open Rofi"                       | Open the Rofi app launcher                   |
+| "Go to workspace three"           | Switch to workspace 3 in your window manager |
+| "What's the weather in Cairo?"    | Tell you the current weather                 |
+| "Add ‘buy milk’ to my to-do list" | Save a reminder to your list                 |
+| "What’s my CPU usage?"            | Show your system's CPU stats                 |
+| "Wanisah quit"                    | Shut down the assistant                      |
 
 ---
 
-## 🛠️ Customization: Adding Your Own Commands
+## 🛠️ Want to Add Your Own Voice Commands?
 
-You can easily teach Wanisah new tricks by editing the `main.py` file.
+It’s easy! You’ll just edit one file: `tools/local_commands.py`
 
-1. Open `main.py` in a text editor.
-2. Find the `while True:` loop at the bottom of the file.
-3. Add a new `elif` block with your desired command and action.
-
-**Example: Add a command to open your file manager (Thunar)**
+### Example: Open Discord
 
 ```python
-elif 'open my files' in query:
-    speak("Opening your file manager.")
-    subprocess.run(["thunar"])
+elif "open discord" in query:
+    speak("Opening Discord.")
+    subprocess.run(["discord"])
+    return True
 ```
+
+That's it. Save and restart Wanisah to try your new command.
 
 ---
 
-## ⚠️ Troubleshooting
+## 🧯 Troubleshooting
 
-**"Sorry, I could not recognize your voice."**
+**Microphone not detected?**
 
-This usually means your microphone isn't set up correctly. You can use the PulseAudio Volume Control tool to fix it.
-
-Install it with:
+Install PulseAudio Volume Control:
 
 ```bash
 sudo pacman -S pavucontrol
 ```
 
-Run it by typing `pavucontrol` in your terminal.
+Then run `pavucontrol` and:
 
-Go to the **Input Devices** tab and make sure the correct microphone is selected as the default (click the ✔️ button).
+1. Go to the **Input Devices** tab
+2. Make sure the correct microphone is selected
+3. Click the ✔️ button to make it the default
 
 ---
 
-## 🤝 Contributing
+## 🤝 Contribute
 
-Contributions are welcome! If you have ideas for new features or improvements, feel free to open an issue or submit a pull request.
+Have an idea? Found a bug? We welcome all feedback, issues, and pull requests. Help make Wanisah better!
 
 ---
 
 ## 📜 License
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+MIT License — free for personal or commercial use. See the `LICENSE` file.
+
+---

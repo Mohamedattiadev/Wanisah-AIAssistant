@@ -8,4 +8,4 @@ pip install SpeechRecognition PyAudio pyttsx3 gpt4all gtts
 
 echo "\n--- Installation Complete! ---"
 echo "You can now run Wanisah by running the 'python main.py' command."
-echo "The first time you run it, it will download the AI model (about 2GB). Please be patient."
+echo "The first time you run it, it will download the AI model (about 2GB or more). Please be patient."

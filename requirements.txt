@@ -1,4 +1,11 @@
+--extra-index-url https://download.pytorch.org/whl/cpu # for torch for cpu only devices (no gpu)
+
 SpeechRecognition
 PyAudio
-pyttsx3
+google-generativeai
 gpt4all
+gtts
+pyttsx3
+psutil
+vosk
+torch

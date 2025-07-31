@@ -1,3 +1,4 @@
+mpg123
 python
 python-pip
 portaudio
